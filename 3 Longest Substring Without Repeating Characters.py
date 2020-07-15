@@ -47,4 +47,33 @@ class Solution:
             i += 1
             max_len = max(max_len,count)
         return max_len
+    
+    # further optimised solution using sliding window technique
+    
+ def longest_substring_unique(s):
+
+    if len(s) == 0:
+        return 0
+
+    last_index_pos = {}
+
+    max_len = start = 0
+
+    for index in range(len(s)):
+        #and start <= last_index_pos[s[index]]
+        if s[index] in last_index_pos and start <= last_index_pos[s[index]]:
+            start = last_index_pos[s[index]] + 1
+            print("Index ",index,"start",start)
+        else:
+            max_len = max(max_len,index - start + 1)
+        print(last_index_pos)
+
+        last_index_pos[s[index]] = index
+        print("\n")
+    print(last_index_pos)
+    return max_len
+
+
+print(longest_substring_unique("baaabcdbd"))
+print("\n")
 
