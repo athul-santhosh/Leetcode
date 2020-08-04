@@ -1,0 +1,34 @@
+# 121 Best time to buyy and sell stock
+
+# we are going to create a Dp table 
+class Solution1:
+    def maxProfit(self, prices,k):
+        if len(prices) == 0:
+            return 0
+        profit = 0
+        dp =[[0 for i in range(len(prices))] for j in range(k+1)]
+        min_price = prices[0]
+        for day in range(len(prices)):
+            min_price = min(prices[day],min_price) 
+            profit = max(prices[day]-min_price,profit)
+            dp[1][day] = profit 
+            
+        print(dp)
+
+# 122 Best time to buyy and sell stock
+class Solution2:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        
+        for day in range(1,len(prices)):
+            if prices[day - 1] < prices[day]:
+                profit = profit + (prices[day] - prices[day -1])
+                #print(profit)
+        return profit
+            
+        
+
+
+
+p = Solution1()
+p.maxProfit([7,1,4,3,2,8],2)
