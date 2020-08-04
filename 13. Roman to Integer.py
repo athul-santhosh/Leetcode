@@ -23,4 +23,4 @@ class Solution:
             
         return num
 p = Solution()
-print(p.romanToInt("XXXXXXX"))
+print(p.romanToInt("XX"))
